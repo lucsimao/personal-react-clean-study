@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "prepare": "husky"
+    "test": "jest --passWithNoTests",
+    "test:watch": "npm test -- --watch",
+    "test:ci": "npm test -- --coverage",
+    "test:staged": "npm test -- --findRelatedTests",
+    "prepare": "husky",
+    "lint": "eslint **/*.{ts,tsx}",
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
   "author": "",

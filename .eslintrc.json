@@ -1,31 +1,44 @@
 {
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "extends": [
-    "standard-with-typescript",
-    "plugin:react/recommended",
-    "plugin:cypress/recommended"
-  ],
   "env": {
-    "cypress/globals": true
+    "jest": true,
+    "jasmine": true
   },
-  "plugins": ["react", "cypress"],
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers",
+    "unused-imports"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "parserOptions": {
-    "project": "./tsconfig-eslint.json"
+    "project": ["./tsconfig.json"]
   },
   "rules": {
-    "@typescript-eslint/consistent-type-definitions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/comma-spacing": "off",
-    "@typescript-eslint/return-await": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "no-redeclare": "off",
-    "import/export": "off",
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "no-console": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-floating-promises": 2,
+    "unused-imports/no-unused-imports": "error",
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always",
+        "groups": ["module", ["parent", "sibling", "index"]],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ]
   }
 }
